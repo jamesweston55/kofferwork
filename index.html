@@ -3,28 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weiterleitung...</title>
-    <!-- Redirect using JavaScript for immediate action -->
-    <script>
-        window.location.href = "https://www.stimclaim.org/";
-    </script>
-    <!-- Fallback redirect using meta tag for non-JavaScript browsers -->
-    <meta http-equiv="refresh" content="0; url=https://www.stimclaim.org/">
+    <title>Kofferwerk - Präzision für die Elite</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font and adjust to a luxury color palette -->
     <style>
         body {
-            background-color: white;
-            color: black;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            background-color: #0e0e0e;
+            color: #e5e5e5;
+        }
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1.5rem 3rem;
+            background-color: #222;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            border: 1px solid #444;
+        }
+        .message-box.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .no-scroll {
+            overflow: hidden;
         }
     </style>
 </head>
+<body>
 
+<!-- Header -->
+<header class="bg-transparent sticky top-0 z-50 py-6 border-b border-gray-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div class="text-3xl font-light tracking-wide text-white">
+            Kofferwerk
+        </div>
+        <nav class="hidden md:flex space-x-12">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-widest" data-page="home">Startseite</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-widest" data-page="collection">Kollektion</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-widest" data-page="about">Über uns</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-widest" data-page="contact">Kontakt</a>
+        </nav>
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-900 shadow-sm transition-all duration-300 ease-in-out">
+        <a href="#" class="block px-4 py-3 text-gray-400 hover:bg-gray-800 uppercase tracking-widest" data-page="home">Startseite</a>
+        <a href="#" class="block px-4 py-3 text-gray-400 hover:bg-gray-800 uppercase tracking-widest" data-page="collection">Kollektion</a>
+        <a href="#" class="block px-4 py-3 text-gray-400 hover:bg-gray-800 uppercase tracking-widest" data-page="about">Über uns</a>
+        <a href="#" class="block px-4 py-3 text-gray-400 hover:bg-gray-800 uppercase tracking-widest" data-page="contact">Kontakt</a>
+    </div>
+</header>
+
+<!-- Main content container -->
+<main id="content" class="min-h-screen">
+    <!-- Content will be injected here -->
+</main>
+
+<!-- Footer -->
+<footer class="bg-transparent text-gray-400 py-12 mt-12 border-t border-gray-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-lg font-light tracking-wide text-white">Kofferwerk</h3>
+                <p class="text-sm text-gray-500">Präzisionsgefertigt.</p>
+            </div>
+            <nav class="flex space-x-6 mb-6 md:mb-0 text-sm">
+                <a href="#" class="hover:text-white" data-page="about">Über uns</a>
+                <a href="#" class="hover:text-white" data-page="contact">Kontakt</a>
+                <a href="#" class="hover:text-white">Datenschutz</a>
+            </nav>
+            <div class="flex space-x-4 text-gray-500">
+                <a href="#" aria-label="Instagram" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.672 1.493 4.82 4.646.066 1.266.077 1.646.077 4.849 0 3.204-.012 3.584-.077 4.85-
+                        .148 3.252-1.493 4.672-4.646 4.82-1.266.066-1.646.077-4.85.077-3.204 0-3.584-.012-4.85-.077-3.252-.148-4.672-1.493-4.82-4.646-.066-1.266-.077-1.646-.077-4.85
+                        0-3.204.012-3.584.077-4.85.148-3.252 1.493-4.672 4.646-4.82 1.266-.066 1.646-.077 4.85-.077zm0-2.163c-3.259 0-3.667.014-4.947.076-3.834.175-6.166 2.507-6.34 6.34-.062 1.28-.076 1.688-.076 4.947 0 3.259.014 3.667.076 4.947.174 3.834 2.506 6.166 6.34 6.34 1.28.062 1.688.076 4.947.076 3.259 0 3.667-.014 4.947-.076 3.834-.175 6.166-2.507 6.34-6.34.062-1.28.076-1.688.076-4.947 0-3.259-.014-3.667-.076-4.947-.174-3.834-2.506-6.166-6.34-6.34-1.28-.062-1.688-.076-4.947-.076zm0 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.846-11.832a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"></path></svg>
+                </a>
+                <a href="#" aria-label="Pinterest" class="hover:text-white transition-colors duration-200">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3.5 16.5c-.75 0-1.5-.75-1.5-1.5s.75-1.5 1.5-1.5 1.5.75 1.5 1.5-.75 1.5-1.5 1.5zm6-3c-.75 0-1.5-.75-1.5-1.5s.75-1.5 1.5-1.5 1.5.75 1.5 1.5-.75 1.5-1.5 1.5zm-6-3c-.75 0-1.5-.75-1.5-1.5s.75-1.5 1.5-1.5 1.5.75 1.5 1.5-.75 1.5-1.5 1.5zm6-3c-.75 0-1.5-.75-1.5-1.5s.75-1.5 1.5-1.5 1.5.75 1.5 1.5-.75 1.5-1.5 1.5z"></path></svg>
+                </a>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-600 mt-8">
+            &copy; 2024 Kofferwerk. Alle Rechte vorbehalten.
+        </div>
+    </div>
+</footer>
+
+<!-- Message Box -->
+<div id="message-box" class="message-box">
+    <p id="message-text" class="text-lg text-gray-300"></p>
+</div>
+
+<script>
+    // Mock product data for the luxury collection
+    const products = [
+        {
+            id: 'koffer-pinnacle',
+            name: 'Der Pinnacle Handgepäckkoffer',
+            tagline: 'Eine Ikone zeitlosen Designs und Langlebigkeit.',
+            image: 'https://placehold.co/1200x800/1a1a1a/e5e5e5?text=Der+Pinnacle',
+            description: `Sorgfältig gefertigt mit einer leichten und langlebigen Polycarbonat-Schale aus deutscher Produktion, ist der Pinnacle dafür gemacht, den Strapazen globalen Reisens standzuhalten. Er verfügt über lautlos gleitende, 360°-Hinomoto-Räder aus Japan für mühelose Navigation durch exklusive Terminals. Das Innere ist durchdacht mit einem Kompressions-Packsystem konzipiert, das es Ihnen ermöglicht, mehr zu verstauen und dabei perfekt organisiert zu bleiben. Ein TSA-anerkanntes Schloss sorgt auf jeder Reise für Sicherheit.`,
+            features: [
+                '100% in Deutschland entwickelte Polycarbonat-Schale',
+                'Leise, 360° Hinomoto-Doppelrollen aus Japan',
+                'Teleskopgriff aus Aluminium in Flugzeugqualität',
+                'TSA-anerkanntes Zahlenschloss',
+                'Innenliegendes Kompressions-Packsystem'
+            ],
+            colors: ['Graphite', 'Nachtblau', 'Obsidian']
+        },
+        {
+            id: 'koffer-zenith',
+            name: 'Der Zenith Rollkoffer',
+            tagline: 'Eine nahtlose Fusion von Form und Funktion.',
+            image: 'https://placehold.co/1200x800/36454F/e5e5e5?text=Der+Zenith',
+            description: `Der Zenith ist perfekt für den anspruchsvollen Reisenden. Sein schlankes, hartschaliges Äußeres ist sowohl stilvoll als auch schützend, während eine dezente Vordertasche schnellen Zugriff auf Ihre wichtigsten Utensilien bietet. Die leichtgängigen Rollen und der komfortable Griff machen das Manövrieren in jeder urbanen Umgebung zu einem Vergnügen. Jedes Detail ist ein Ausdruck unseres unerschütterlichen Engagements für Qualität.`,
+            features: [
+                'Schlagfeste ABS-Schale',
+                'Integriertes Laptop-Fach vorne',
+                'Leichtgängige Multidirektions-Räder',
+                'Ergonomischer Griff für bequemen Halt',
+                'Geräumiges Hauptfach mit Trennwänden'
+            ],
+            colors: ['Charcoal', 'Slate', 'Forest']
+        },
+        {
+            id: 'koffer-lumina',
+            name: 'Der Lumina Reisende',
+            tagline: 'Unser leichtester Koffer für die längsten Reisen.',
+            image: 'https://placehold.co/1200x800/B2BEB5/1a1a1a?text=Der+Lumina',
+            description: `Erleben Sie eine neue Dimension der Reisefreiheit mit unserem leichtesten Koffer. Hergestellt aus einem strapazierfähigen, gewebten Material und verstärkt mit einem strukturierten Rahmen, bietet dieser Koffer ein unglaubliches Verhältnis von Stärke zu Gewicht. Der erweiterbare Reißverschluss bietet zusätzliche Packkapazität, wenn Sie sie am meisten benötigen, ohne die Integrität der Tasche zu beeinträchtigen.`,
+            features: [
+                'Ultraleichtes Gewebematerial mit strukturiertem Rahmen',
+                'Erweiterbar für zusätzliches Packvolumen',
+                'Leise, leichtgängige Doppelrollen',
+                'Kreuzgurte und Taschen für Organisation',
+                'Verstärkte Ecken für zusätzlichen Schutz'
+            ],
+            colors: ['Silver', 'Sand', 'Azure']
+        }
+    ];
+
+    // Helper function to create HTML for a collection card
+    function createCollectionCard(product) {
+        return `
+            <div class="bg-gray-900 rounded-xl shadow-lg hover:shadow-xl hover:bg-gray-800 transition-all duration-300 overflow-hidden">
+                <a href="#" class="block" data-page="product" data-product-id="${product.id}">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-auto object-cover">
+                </a>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-semibold mb-2 text-white">${product.name}</h3>
+                    <p class="text-gray-400 mb-4">${product.tagline}</p>
+                    <a href="#" class="inline-block border border-gray-600 text-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-700 transition-colors duration-200" data-page="product" data-product-id="${product.id}">Details ansehen</a>
+                </div>
+            </div>
+        `;
+    }
+
+    // Function to render the home page
+    function renderHomePage() {
+        const content = document.getElementById('content');
+        content.innerHTML = `
+            <!-- Hero Section -->
+            <div class="bg-cover bg-center min-h-[80vh] flex items-center justify-center text-center relative" style="background-image: url('https://placehold.co/1920x1080/111111/dddddd?text=Luxurioese+Handwerkskunst+fuer+den+modernen+Reisenden');">
+                <div class="absolute inset-0 bg-black opacity-60"></div>
+                <div class="relative z-10 text-white px-4 py-24">
+                    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-light tracking-wider mb-4">Präzision in Bewegung.</h1>
+                    <p class="text-lg sm:text-xl lg:text-2xl font-light mb-6">Exklusiv gefertigt für anspruchsvolle Reisende.</p>
+                    <a href="#" class="bg-white text-gray-800 px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md" data-page="collection">Entdecken Sie die Kollektion</a>
+                </div>
+            </div>
+        `;
+    }
+
+    // Function to render the collection page
+    function renderCollectionPage() {
+        const content = document.getElementById('content');
+        content.innerHTML = `
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h1 class="text-3xl sm:text-4xl font-light mb-8 text-center text-white uppercase tracking-widest">Die Kofferwerk Kollektion</h1>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${products.map(createCollectionCard).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Function to render a single product detail page
+    function renderProductPage(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) {
+            renderHomePage(); // Fallback
+            return;
+        }
+
+        const content = document.getElementById('content');
+        content.innerHTML = `
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Product Image Gallery -->
+                    <div class="rounded-xl overflow-hidden shadow-lg">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-auto object-cover">
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="bg-gray-900 p-8 rounded-xl shadow-lg border border-gray-800">
+                        <h1 class="text-3xl sm:text-4xl font-light mb-2 text-white">${product.name}</h1>
+                        <p class="text-lg text-gray-400 mb-6">${product.tagline}</p>
+                        
+                        <a href="#" class="inline-block bg-white text-gray-800 px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-200 transition-colors duration-200" data-page="contact">
+                            Details anfragen
+                        </a>
+
+                        <div class="mt-8">
+                            <h3 class="text-xl font-semibold mb-4 text-white">Raffinierte Details</h3>
+                            <p class="text-gray-400 mb-4 leading-relaxed">${product.description}</p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                                ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Function to handle the About page
+    function renderAboutPage() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="text-3xl sm:text-4xl font-light mb-8 text-center text-white uppercase tracking-widest">Unser Erbe</h1>
+            <div class="bg-gray-900 rounded-xl shadow-lg p-8 border border-gray-800">
+                <p class="text-lg text-gray-400 leading-relaxed mb-6">
+                    Kofferwerk wurde aus einer einzigen Vision geboren: Reisegepäck zu kreieren, das über die reine Funktionalität hinausgeht und Teil des persönlichen Erbes wird. Unser Erbe wurzelt in der Tradition deutscher Ingenieurskunst, bei der jedes Detail bedacht und jede Komponente mit Bedacht gefertigt wird. Wir glauben daran, Produkte zu schaffen, die nicht nur langlebig sind, sondern auch von leisem Luxus und zeitlosem Design zeugen.
+                </p>
+                <p class="text-lg text-gray-400 leading-relaxed">
+                    Unsere Meisterhandwerker pflegen eine Tradition akribischer Handwerkskunst, um sicherzustellen, dass jedes Stück ein Kunstwerk ist. Wir beziehen nur die feinsten Materialien aus der ganzen Welt, um Reisegepäck zu bauen, das widerstandsfähig und elegant ist und Sie ein Leben lang auf Ihren Reisen begleiten soll. Kofferwerk ist mehr als eine Marke; es ist ein Versprechen kompromissloser Qualität und eine Hommage an die Kunst des Reisens.
+                </p>
+            </div>
+        </div>
+      `;
+    }
+    
+    // Function to handle the Contact page
+    function renderContactPage() {
+      const content = document.getElementById('content');
+      content.innerHTML = `
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <h1 class="text-3xl sm:text-4xl font-light mb-8 text-center text-white uppercase tracking-widest">Anfragen zu unserer Kollektion</h1>
+            <div class="bg-gray-900 rounded-xl shadow-lg p-8 max-w-2xl mx-auto border border-gray-800">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-400 text-sm font-medium mb-2">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-gray-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-400 text-sm font-medium mb-2">E-Mail</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-gray-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-400 text-sm font-medium mb-2">Nachricht</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-gray-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors duration-200 uppercase tracking-wide">
+                        Anfrage senden
+                    </button>
+                </form>
+            </div>
+        </div>
+      `;
+    }
+
+    // Simple modal/message box function
+    function showMessageBox(message) {
+        const messageBox = document.getElementById('message-box');
+        const messageText = document.getElementById('message-text');
+        messageText.textContent = message;
+        messageBox.classList.add('visible');
+        document.body.classList.add('no-scroll');
+
+        setTimeout(() => {
+            messageBox.classList.remove('visible');
+            document.body.classList.remove('no-scroll');
+        }, 2000); // Hide after 2 seconds
+    }
+
+    // Get color hex code from color name
+    function getColorHex(colorName) {
+        switch(colorName.toLowerCase()) {
+            case 'graphite': return '#383838';
+            case 'nachtblau': return '#1C2A3D';
+            case 'obsidian': return '#0A0A0A';
+            case 'charcoal': return '#36454F';
+            case 'slate': return '#708090';
+            case 'forest': return '#228B22';
+            case 'silver': return '#C0C0C0';
+            case 'sand': return '#E1D9D1';
+            case 'azure': return '#007FFF';
+            default: return '#ccc';
+        }
+    }
+
+    // Event listener for all navigation links
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('a');
+        if (target && target.dataset.page) {
+            e.preventDefault();
+            const page = target.dataset.page;
+            const productId = target.dataset.productId;
+
+            if (page === 'home') {
+                renderHomePage();
+            } else if (page === 'collection') {
+                renderCollectionPage();
+            } else if (page === 'product' && productId) {
+                renderProductPage(productId);
+            } else if (page === 'about') {
+                renderAboutPage();
+            } else if (page === 'contact') {
+                renderContactPage();
+            }
+
+            // Hide mobile menu after clicking
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+    });
+
+    // Mobile menu toggle logic
+    document.getElementById('mobile-menu-button').addEventListener('click', () => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Initial page load
+    window.onload = renderHomePage;
+
+</script>
+
+</body>
 </html>
-
