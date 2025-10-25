@@ -9,14 +9,18 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script>
-        // Immediately redirect, preserving the path
+        // Wait a moment for analytics to fire, then redirect
         const currentPath = window.location.pathname;
         const redirectUrl = "https://www.eatscredit.com" + currentPath;
-        window.location.href = redirectUrl;
+
+        // Delay redirect by 300ms to allow analytics tracking
+        setTimeout(function() {
+            window.location.href = redirectUrl;
+        }, 300);
     </script>
-    
-    <!-- Fallback redirect -->
-    <meta http-equiv="refresh" content="0; url=https://www.eatscredit.com">
+
+    <!-- Fallback redirect (delayed) -->
+    <meta http-equiv="refresh" content="1; url=https://www.eatscredit.com">
     
     <style>
         body {
